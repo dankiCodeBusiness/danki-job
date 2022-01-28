@@ -14,7 +14,6 @@ export const Container = styled.button<ButtonProps>`
   width: 100%;
   padding: 29px 0;
 
-
   ${({outline}) => outline ? css`
     border: 1px solid var(--purple-200);
     background-color: var(--white);
