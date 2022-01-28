@@ -3,12 +3,13 @@ import {Container} from './styles';
 
 interface Props {
     title: string
+    outline?: boolean
 }
 
-export function Button({title}: Props) {
+export function Button({title, outline = false}: Props) {
 
     return (
-        <Container>
+        <Container outline={outline}>
             {title}
         </Container>
     );

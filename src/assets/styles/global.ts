@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     --purple-200: #5e3ea1;
     --dark: #000000;
     --gray-light: #CFCFCF;
+    --gray-light-100: #D8D8D8;
   }
 
   html {
