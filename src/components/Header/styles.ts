@@ -12,6 +12,10 @@ export const Container = styled.header`
 
   justify-items: center;
   align-items: center;
+  
+  @media(max-width: 480px) {
+    padding-bottom: 60px;
+  }
 
   .top {
     width: 100%;

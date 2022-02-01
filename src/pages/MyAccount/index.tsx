@@ -54,42 +54,46 @@ export function MyAccount() {
                         </div>
                         <div className="skills">
                             <h2>Habilidades</h2>
-                            <div>
-                                <input type="checkbox" id={'frontend'} name={'frontend'}/>
-                                <label htmlFor="frontend">Front-End</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id={'backend'} name={'backend'}/>
-                                <label htmlFor="backend">Back-End</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id={'games'} name={'games'}/>
-                                <label htmlFor="games">Games</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id={'mobile'} name={'mobile'}/>
-                                <label htmlFor="mobile">Mobile</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id={'blockchain'} name={'blockchain'}/>
-                                <label htmlFor="blockchain">Blockchain</label>
+                            <div className="skill-items">
+                                <div>
+                                    <input type="checkbox" id={'frontend'} name={'frontend'}/>
+                                    <label htmlFor="frontend">Front-End</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id={'backend'} name={'backend'}/>
+                                    <label htmlFor="backend">Back-End</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id={'games'} name={'games'}/>
+                                    <label htmlFor="games">Games</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id={'mobile'} name={'mobile'}/>
+                                    <label htmlFor="mobile">Mobile</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id={'blockchain'} name={'blockchain'}/>
+                                    <label htmlFor="blockchain">Blockchain</label>
+                                </div>
                             </div>
                         </div>
                         <div className="projects">
                             <h2>Projetos</h2>
-                            <div>
-                                <img src={placeholder} alt="Project name"/>
-                                <h3><a href="https://google.com">Nome do projeto</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque consectetur
-                                    iste reprehenderit ut. Autem, debitis eligendi iusto magnam non optio pariatur
-                                    possimus quos, sapiente unde vel voluptatem. Error, veritatis.</p>
-                            </div>
-                            <div>
-                                <img src={placeholder} alt="Project name"/>
-                                <h3><a href="https://google.com">Nome do projeto</a></h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque consectetur
-                                    iste reprehenderit ut. Autem, debitis eligendi iusto magnam non optio pariatur
-                                    possimus quos, sapiente unde vel voluptatem. Error, veritatis.</p>
+                            <div className="project-items">
+                                <div>
+                                    <img src={placeholder} alt="Project name"/>
+                                    <h3><a href="https://google.com">Nome do projeto</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque consectetur
+                                        iste reprehenderit ut. Autem, debitis eligendi iusto magnam non optio pariatur
+                                        possimus quos, sapiente unde vel voluptatem. Error, veritatis.</p>
+                                </div>
+                                <div>
+                                    <img src={placeholder} alt="Project name"/>
+                                    <h3><a href="https://google.com">Nome do projeto</a></h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi atque consectetur
+                                        iste reprehenderit ut. Autem, debitis eligendi iusto magnam non optio pariatur
+                                        possimus quos, sapiente unde vel voluptatem. Error, veritatis.</p>
+                                </div>
                             </div>
                         </div>
                         <div className="footer">
