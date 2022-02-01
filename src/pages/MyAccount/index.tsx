@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Container} from './styles';
 import {Helmet} from "react-helmet";
 import {Header} from "../../components/Header";
@@ -10,8 +10,18 @@ import {Button} from "../../components/Button";
 import avatar from '../../assets/images/avatar.jpeg'
 import placeholder from '../../assets/images/placeholder.png'
 import ImageUploadPNG from '../../assets/images/imageupload.png'
+import {ProjectModal} from "../../components/ProjectModal";
 
 export function MyAccount() {
+    const [isOpen, setIsOpen] = useState(false)
+
+    function handleOpenProjectModal() {
+        setIsOpen(true)
+    }
+
+    function handleCloseProjectModal() {
+        setIsOpen(false)
+    }
 
     return (
         <>
@@ -97,13 +107,14 @@ export function MyAccount() {
                             </div>
                         </div>
                         <div className="footer">
-                            <Button title={'Adicionar novo projeto'}/>
-                            <Button title={'Ver meu perfil público'} outline/>
+                            <Button title={'Adicionar novo projeto'} type={'button'} handleAction={handleOpenProjectModal}/>
+                            <Button title={'Ver meu perfil público'} outline handleAction={handleCloseProjectModal}/>
                         </div>
                     </form>
 
                 </Container>
             </Background>
+            <ProjectModal isOpen={isOpen} />
         </>
     );
 

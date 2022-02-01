@@ -43,7 +43,7 @@ export function Register() {
                         </FormControll>
 
                         <div className={'btnContainer'}>
-                            <Button title={'Finalizar meu cadastro'}/>
+                            <Button title={'Finalizar meu cadastro'} handleAction={() => {}}/>
                         </div>
                     </form>
                 </Container>

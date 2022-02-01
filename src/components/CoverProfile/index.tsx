@@ -8,7 +8,7 @@ export function CoverProfile() {
     return (
         <Container file={CoverJpg}>
             <div>
-                <Button title={'Editar capa'} />
+                <Button title={'Editar capa'} handleAction={() => {}} />
             </div>
         </Container>
     );
