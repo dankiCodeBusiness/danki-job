@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     --dark: #000000;
     --gray-light: #CFCFCF;
     --gray-light-100: #D8D8D8;
+    --red-200: #CC3E3E;
   }
 
   html {

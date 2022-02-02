@@ -1,7 +1,9 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components'
+import { cssVar, transparentize } from 'polished'
 
 interface ButtonProps {
-    outline: boolean
+  outline: boolean
+  btnColor?: string
 }
 
 export const Container = styled.button<ButtonProps>`
@@ -13,18 +15,36 @@ export const Container = styled.button<ButtonProps>`
   display: block;
   width: 100%;
   padding: 29px 0;
+  transition: ease-in .4s;
 
-  ${({outline}) => outline ? css`
-    border: 1px solid var(--purple-200);
-    background-color: var(--white);
-    color: var(--purple-200);
-  ` : css`
-    border: none;
-    background-color: var(--purple-200);
-    color: var(--white);
-  `}
-  &:hover {
-    background-color: var(--purple-100);
-    color: var(--purple-200);
-  }
-`;
+  ${({ outline, btnColor }) =>
+    outline
+      ? css`
+          border: 1px solid
+            ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+          background-color: var(--white);
+          color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+
+          &:hover {
+            transition: ease-out .2s;
+            background-color: ${btnColor
+              ? transparentize(0.7, String(cssVar(btnColor)))
+              : cssVar('--purple-100')};
+            color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+          }
+        `
+      : css`
+          border: none;
+          background-color: ${btnColor
+            ? cssVar(btnColor)
+            : cssVar('--purple-200')};
+          color: var(--white);
+
+          &:hover {
+            background-color: ${btnColor
+              ? transparentize(0.7, String(cssVar(btnColor)))
+              : cssVar('--purple-100')};
+            color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+          }
+        `}
+`
