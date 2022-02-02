@@ -114,7 +114,7 @@ export function MyAccount() {
 
                 </Container>
             </Background>
-            <ProjectModal isOpen={isOpen} />
+            <ProjectModal isOpen={isOpen} closeModal={handleCloseProjectModal} />
         </>
     );
 

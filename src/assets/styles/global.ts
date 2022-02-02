@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 
@@ -49,6 +49,44 @@ const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  .react-modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-width: 1296px;
+    background-color: var(--white);
+    padding: 60px 100px;
+    position: relative;
+    border-radius: 5px;
+  }
+
+  .react-modal-close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    border: 0;
+    background: transparent;
+    font-size: 2rem;
+    color: var(--purple-200);
+    transition: ease-in .2s;
+
+    &:hover {
+      transition: ease-out .4s;
+      color: var(--purple-100);
+      text-shadow: var(--dark) 1px 1px 2px 2px;
+    }
+  }
 `
 
 const Container = styled.div`
@@ -63,4 +101,4 @@ const Container = styled.div`
     'footer';
 `
 
-export {GlobalStyle, Container}
+export { GlobalStyle, Container }
