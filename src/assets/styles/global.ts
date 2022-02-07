@@ -64,12 +64,16 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .react-modal-content {
-    width: 100%;
-    max-width: 1296px;
     background-color: var(--white);
     padding: 60px 100px;
-    position: relative;
+    position: absolute;
     border-radius: 5px;
+    inset: 40px;
+    overflow: auto;
+    
+    @media(max-width: 480px) {
+      padding: 30px 20px;
+    }
   }
 
   .react-modal-close {
