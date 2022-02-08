@@ -5,6 +5,9 @@ import {Home} from "./pages/Home";
 import {Register} from "./pages/Register";
 import {Profile} from "./pages/Profile";
 import {MyAccount} from "./pages/MyAccount";
+import Modal from "react-modal";
+
+Modal.setAppElement('#root')
 
 export default function App() {
     return (
