@@ -6,29 +6,34 @@ import { FormControll } from '../FormControll'
 import TrashSvg from '../../assets/images/trash.png'
 import placeholder from '../../assets/images/placeholder.png'
 import { v4 as uuidV4 } from 'uuid'
+import {ProjectImageProps, ProjectProps} from '../../pages/MyAccount'
 
 interface ModalProps {
   isOpen: boolean
   closeModal: () => void
+  handle: (data: ProjectProps) => void
 }
 
-interface ProjectImageProps {
-  id: string
-  name: string
-  path: string
-}
-
-export function ProjectModal({ isOpen, closeModal }: ModalProps) {
+export function ProjectModal({ isOpen, closeModal, handle }: ModalProps) {
   const inputFileRef = useRef<HTMLInputElement>(null)
   const [projectImages, setProjectImages] = useState<ProjectImageProps[]>([])
+  const [projectName, setProjectName] = useState('')
+  const [projectDescription, setProjectDescription] = useState('')
+  const [projectUrl, setProjectUrl] = useState('')
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
-    console.log('submit')
+    handle({
+      name: projectName,
+      description: projectDescription,
+      url: projectUrl,
+      images: projectImages
+    })
+
+    closeModal()
   }
 
   function onFileChangeCapture(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log(event.target.files)
     if (!event.target.files || event.target.files.length === 0) {
       setProjectImages([])
       return false
@@ -50,6 +55,10 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
 
   function handleOpenInputFile() {
     if (inputFileRef.current !== null) inputFileRef.current.click()
+  }
+
+  function handleRemoveProjectImage(id: string) {
+    setProjectImages(projectImages.filter((image) => image.id !== id))
   }
 
   return (
@@ -77,6 +86,8 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
               name={'name_project'}
               id={'name_project'}
               placeholder={'Ex.: Site para empresa Danki'}
+              onChange={(event) => setProjectName(event.target.value)}
+              required={true}
             />
           </FormControll>
           <FormControll
@@ -88,6 +99,8 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
               name={'url_project'}
               id={'url_project'}
               placeholder={'https://'}
+              onChange={(event) => setProjectUrl(event.target.value)}
+              required={true}
             />
           </FormControll>
           <FormControll
@@ -98,6 +111,8 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
               name={'description_project'}
               id={'description_project'}
               rows={5}
+              onChange={(event) => setProjectDescription(event.target.value)}
+              required={true}
             />
           </FormControll>
         </div>
@@ -108,13 +123,16 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
                 backgroundImage={item.path ?? placeholder}
                 key={item.id}
               >
-                <button type={'button'}>
+                <button
+                  type={'button'}
+                  onClick={() => handleRemoveProjectImage(item.id)}
+                >
                   <img src={TrashSvg} alt="Remover imagem" />
                 </button>
               </ProjectCotainer>
             ))
           ) : (
-            <p>Adicione imagens ao seu projeto.</p>
+            <p></p>
           )}
         </div>
         <div className="button-container">
@@ -136,7 +154,7 @@ export function ProjectModal({ isOpen, closeModal }: ModalProps) {
             handleAction={() => {}}
             color={'--red-200'}
           />
-          <Button title={'Publicar projeto'} handleAction={() => {}} />
+          <Button title={'Publicar projeto'} type={"submit"} handleAction={() => handleSubmit} />
         </div>
       </Container>
     </Modal>
