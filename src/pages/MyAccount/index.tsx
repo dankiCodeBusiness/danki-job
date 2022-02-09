@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container } from './styles'
+import { Container, ProjectContainer } from './styles'
 import { Helmet } from 'react-helmet'
 import { Header } from '../../components/Header'
 import { Background } from '../../components/Background'
@@ -19,6 +19,7 @@ export interface ProjectImageProps {
 }
 
 export interface ProjectProps {
+  id: string
   name: string
   description: string
   url: string
@@ -27,7 +28,7 @@ export interface ProjectProps {
 
 export function MyAccount() {
   const [isOpen, setIsOpen] = useState(false)
-  const [project, setProject] = useState<ProjectProps[]>([])
+  const [projects, setProjects] = useState<ProjectProps[]>([])
 
   function handleOpenProjectModal() {
     setIsOpen(true)
@@ -38,10 +39,8 @@ export function MyAccount() {
   }
 
   function handleSetProject(data: ProjectProps): void {
-    setProject([data])
+    setProjects([...projects, data])
   }
-
-  console.log(project)
 
   return (
     <>
@@ -136,19 +135,21 @@ export function MyAccount() {
             <div className="projects">
               <h2>Projetos</h2>
               <div className="project-items">
-                {project.length > 0 && (
-                  <div>
-                    <img src={placeholder} alt="Project name" />
-                    <h3>
-                      <a href="https://google.com">Nome do projeto</a>
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Animi atque consectetur iste reprehenderit ut. Autem,
-                      debitis eligendi iusto magnam non optio pariatur possimus
-                      quos, sapiente unde vel voluptatem. Error, veritatis.
-                    </p>
-                  </div>
+                {projects.length > 0 ? (
+                  projects.map((project) => (
+                    <ProjectContainer key={project.id} backgroundImage={project.images[0].path ?? placeholder}>
+                      <div>
+                        <h3>
+                          <a href={project.url} title={project.name}>
+                            {project.name}
+                          </a>
+                        </h3>
+                        <p>{project.description}</p>
+                      </div>
+                    </ProjectContainer>
+                  ))
+                ) : (
+                  <p>Você ainda não adicionou nenhum projeto.</p>
                 )}
               </div>
             </div>

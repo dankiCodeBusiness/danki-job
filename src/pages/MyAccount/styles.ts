@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+
+interface ProjectProps {
+  backgroundImage: string
+}
 
 export const Container = styled.section`
-
   form {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -102,13 +105,13 @@ export const Container = styled.section`
             margin-top: 10px;
           }
 
-          input[type=checkbox] {
+          input[type='checkbox'] {
             position: relative;
             cursor: pointer;
           }
 
-          input[type=checkbox]:before {
-            content: "";
+          input[type='checkbox']:before {
+            content: '';
             display: block;
             position: absolute;
             width: 20px;
@@ -120,8 +123,8 @@ export const Container = styled.section`
             background-color: var(--gray-light-100);
           }
 
-          input[type=checkbox]:checked:after {
-            content: "";
+          input[type='checkbox']:checked:after {
+            content: '';
             display: block;
             width: 6px;
             height: 12px;
@@ -148,38 +151,16 @@ export const Container = styled.section`
         text-transform: uppercase;
         margin-bottom: 20px;
       }
-      
+
       .project-items {
         display: grid;
-        grid-template-columns: minmax(auto, 1fr)  minmax(auto, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         grid-gap: 2rem;
-        
+
         @media (max-width: 480px) {
           grid-template-columns: 1fr;
         }
-
-        img {
-          width: 100%;
-        }
-
-        h3 {
-          margin-top: 18px;
-          font-size: 1.4rem;
-          font-weight: 700;
-
-          a {
-            color: var(--dark);
-          }
-        }
-
-        p {
-          margin-top: 10px;
-          font-weight: 400;
-          font-size: 1.1rem;
-          color: var(--dark);
-        }
       }
-
     }
 
     .footer {
@@ -191,13 +172,44 @@ export const Container = styled.section`
         width: 100%;
         max-width: 370px;
         margin-bottom: 65px;
-        
-        @media(max-width: 480px) {
+
+        @media (max-width: 480px) {
           max-width: 100%;
           margin-bottom: 30px;
         }
       }
     }
   }
+`
 
-`;
+export const ProjectContainer = styled.div<ProjectProps>`
+  background-image: url('${({ backgroundImage }) => backgroundImage}');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding-top: 400px;
+
+  > div {
+    width: 100%;
+    height: 100px;
+    background-color: var(--white);
+    
+    h3 {
+      margin-top: 18px;
+      font-size: 1.4rem;
+      font-weight: 700;
+
+      a {
+        color: var(--dark);
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--dark);
+    }
+  }
+`

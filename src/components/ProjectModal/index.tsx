@@ -23,19 +23,23 @@ export function ProjectModal({ isOpen, closeModal, handle }: ModalProps) {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault()
+    if (projectImages.length === 0) {
+      return alert('Adicione uma imagem ao projeto.')
+    }
     handle({
+      id: uuidV4(),
       name: projectName,
       description: projectDescription,
       url: projectUrl,
       images: projectImages
     })
 
+    setProjectImages([])
     closeModal()
   }
 
   function onFileChangeCapture(event: React.ChangeEvent<HTMLInputElement>) {
     if (!event.target.files || event.target.files.length === 0) {
-      setProjectImages([])
       return false
     }
     const reader = new FileReader()
@@ -146,11 +150,12 @@ export function ProjectModal({ isOpen, closeModal, handle }: ModalProps) {
           <Button
             title={'Adicionar imagem'}
             outline
+            type={"button"}
             handleAction={handleOpenInputFile}
           />
           <Button
             title={'Excluir projeto'}
-            type={'submit'}
+            type={'button'}
             handleAction={() => {}}
             color={'--red-200'}
           />
