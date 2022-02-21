@@ -84,6 +84,7 @@ export const Container = styled.section`
         header {
           img {
             width: 100%;
+            cursor: pointer;
           }
           h1 {
             margin-top: 18px;

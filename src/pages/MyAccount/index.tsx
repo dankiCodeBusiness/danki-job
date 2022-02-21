@@ -11,6 +11,7 @@ import avatar from '../../assets/images/avatar.jpeg'
 import placeholder from '../../assets/images/placeholder.png'
 import ImageUploadPNG from '../../assets/images/imageupload.png'
 import { ProjectModal } from '../../components/ProjectModal'
+import { useNavigate } from 'react-router-dom'
 
 export interface ProjectImageProps {
   id: string
@@ -27,6 +28,7 @@ export interface ProjectProps {
 }
 
 export function MyAccount() {
+  const navigation = useNavigate()
   const [isOpen, setIsOpen] = useState(false)
   const [projects, setProjects] = useState<ProjectProps[]>([])
 
@@ -36,6 +38,10 @@ export function MyAccount() {
 
   function handleCloseProjectModal() {
     setIsOpen(false)
+  }
+
+  function handlePublicPreviewProfile() {
+    navigation('/perfil/1')
   }
 
   function handleSetProject(data: ProjectProps): void {
@@ -137,7 +143,10 @@ export function MyAccount() {
               <div className="project-items">
                 {projects.length > 0 ? (
                   projects.map((project) => (
-                    <ProjectContainer key={project.id} backgroundImage={project.images[0].path ?? placeholder}>
+                    <ProjectContainer
+                      key={project.id}
+                      backgroundImage={project.images[0].path ?? placeholder}
+                    >
                       <div>
                         <h3>
                           <a href={project.url} title={project.name}>
@@ -160,9 +169,10 @@ export function MyAccount() {
                 handleAction={handleOpenProjectModal}
               />
               <Button
+                type={'button'}
                 title={'Ver meu perfil público'}
                 outline
-                handleAction={handleCloseProjectModal}
+                handleAction={handlePublicPreviewProfile}
               />
             </div>
           </form>

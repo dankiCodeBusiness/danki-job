@@ -8,6 +8,7 @@ import placeholder from '../../assets/images/placeholder.png'
 import { CoverProfile } from '../../components/CoverProfile'
 import { Helmet } from 'react-helmet'
 import { Button } from '../../components/Button'
+import { DisplayProjectModal } from '../../components/DisplayProjectModal'
 
 interface ISkillsProps {
   id: string
@@ -27,7 +28,7 @@ interface IProjectsProps {
   images: IProjectImagesProps[]
 }
 
-interface IProfileProps {
+export interface IProfileProps {
   id: string
   first_name: string
   last_name: string
@@ -43,6 +44,19 @@ interface IProfileProps {
 export function Profile() {
   const { profileId } = useParams()
   const [profile, setProfile] = useState<IProfileProps>({} as IProfileProps)
+  const [projectId, setProjectId] = useState('')
+
+  const [isOpenDisplayProjectModal, setIsOpenDisplayProjectModal] =
+    useState(false)
+
+  function handleCloseDisplayProjectModal() {
+    setIsOpenDisplayProjectModal(false)
+  }
+
+  function handleOpenDisplayProjectModal() {
+    setProjectId('1')
+    setIsOpenDisplayProjectModal(true)
+  }
 
   useEffect(() => {
     const user: IProfileProps = {
@@ -67,7 +81,12 @@ export function Profile() {
           description:
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aut cum eius explicabo hic, illum in ipsum magni modi mollitia neque non optio porro provident soluta tempora unde! Eveniet, minus?',
           title: 'Danki Job',
-          images: [{ id: String(1), thumb: placeholder, url: placeholder }]
+          images: [
+              { id: String(1), thumb: placeholder, url: placeholder },
+              { id: String(2), thumb: placeholder, url: placeholder },
+              { id: String(3), thumb: placeholder, url: placeholder },
+              { id: String(4), thumb: placeholder, url: placeholder },
+          ]
         },
         {
           id: String(2),
@@ -127,7 +146,11 @@ export function Profile() {
                   {profile.projects.map((project) => (
                     <article key={project.id}>
                       <header>
-                        <img src={project.images[0].url} alt={project.title} />
+                        <img
+                          src={project.images[0].url}
+                          alt={project.title}
+                          onClick={handleOpenDisplayProjectModal}
+                        />
                         <h1>{project.title}</h1>
                       </header>
                       <p>{project.description}</p>
@@ -137,6 +160,12 @@ export function Profile() {
               </section>
             </Container>
           </Background>
+
+          <DisplayProjectModal
+            project={profile}
+            isOpen={isOpenDisplayProjectModal}
+            closeModal={handleCloseDisplayProjectModal}
+          />
         </>
       )}
     </>
