@@ -1,16 +1,24 @@
-import React from 'react';
-import {Container} from './styles';
+import React from 'react'
+import { Container } from './styles'
 import CoverJpg from '../../assets/images/cover-profile.jpeg'
-import {Button} from "../Button";
+import { Button } from '../Button'
 
-export function CoverProfile() {
+interface ICoverProfileProps {
+  name?: string
+}
 
-    return (
-        <Container file={CoverJpg}>
-            <div>
-                <Button title={'Editar capa'} handleAction={() => {}} />
-            </div>
-        </Container>
-    );
+export function CoverProfile({ name }: ICoverProfileProps) {
+  console.log(name)
 
+  return (
+    <Container file={CoverJpg}>
+      {name ? (
+        <h1>{name}</h1>
+      ) : (
+        <div>
+          <Button title={'Editar capa'} handleAction={() => {}} />
+        </div>
+      )}
+    </Container>
+  )
 }
