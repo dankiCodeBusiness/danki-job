@@ -50,8 +50,8 @@ export function DisplayProjectModal({
           </header>
           <div>
             {
-              project.projects[0].images.map(image => (
-                  <img src={image.url} alt=""/>
+              project.projects[0].images.map((image, id) => (
+                  <img src={image.url} alt="" key={id}/>
               ))
             }
           </div>

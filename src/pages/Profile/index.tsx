@@ -98,7 +98,7 @@ export function Profile() {
       ]
     }
     setProfile(user)
-  }, [])
+  }, [profileId])
 
   return (
     <>
@@ -115,7 +115,7 @@ export function Profile() {
           <CoverProfile name={profile.full_name} />
           <Background>
             <Container>
-              <article key={projectId}>
+              <article>
                 <header>
                   <img src={profile.avatar} alt={profile.full_name} />
                   <p>{profile.description}</p>
@@ -140,7 +140,7 @@ export function Profile() {
                   ))}
                 </div>
               </section>
-              <section className={'projects'}>
+              <section className={'projects'} key={projectId}>
                 <h2>Projetos</h2>
                 <div>
                   {profile.projects.map((project) => (
