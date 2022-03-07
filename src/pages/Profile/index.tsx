@@ -98,7 +98,7 @@ export function Profile() {
       ]
     }
     setProfile(user)
-  }, [])
+  }, [projectId])
 
   return (
     <>
