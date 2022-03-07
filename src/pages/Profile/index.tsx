@@ -98,7 +98,7 @@ export function Profile() {
       ]
     }
     setProfile(user)
-  }, [projectId])
+  }, [])
 
   return (
     <>
@@ -115,7 +115,7 @@ export function Profile() {
           <CoverProfile name={profile.full_name} />
           <Background>
             <Container>
-              <article>
+              <article key={projectId}>
                 <header>
                   <img src={profile.avatar} alt={profile.full_name} />
                   <p>{profile.description}</p>
