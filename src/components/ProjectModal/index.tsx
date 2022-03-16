@@ -157,7 +157,7 @@ export function ProjectModal({ isOpen, closeModal, handle }: ModalProps) {
             title={'Excluir projeto'}
             type={'button'}
             handleAction={() => {}}
-            color={'--red-200'}
+            color={'#CC3E3E'}
           />
           <Button title={'Publicar projeto'} type={"submit"} handleAction={() => handleSubmit} />
         </div>

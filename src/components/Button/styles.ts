@@ -21,30 +21,30 @@ export const Container = styled.button<ButtonProps>`
     outline
       ? css`
           border: 1px solid
-            ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+            ${btnColor ? btnColor : '#5e3ea1'};
           background-color: var(--white);
-          color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+          color: ${btnColor ? btnColor : '#5e3ea1'};
 
           &:hover {
             transition: ease-out .2s;
             background-color: ${btnColor
-              ? transparentize(0.7, String(cssVar(btnColor)))
-              : cssVar('--purple-100')};
-            color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+              ? transparentize(0.7, btnColor)
+              : '#f5f0ff'};
+            color: ${btnColor ? btnColor : '#5e3ea1'};
           }
         `
       : css`
           border: none;
           background-color: ${btnColor
-            ? cssVar(btnColor)
-            : cssVar('--purple-200')};
+            ? btnColor
+            : '#5e3ea1'};
           color: var(--white);
 
           &:hover {
             background-color: ${btnColor
-              ? transparentize(0.7, String(cssVar(btnColor)))
-              : cssVar('--purple-100')};
-            color: ${btnColor ? cssVar(btnColor) : cssVar('--purple-200')};
+              ? transparentize(0.7, btnColor)
+              : '#f5f0ff'};
+            color: ${btnColor ? btnColor : '#5e3ea1'};
           }
         `}
 `
