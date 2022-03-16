@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { cssVar, transparentize } from 'polished'
+import { transparentize } from 'polished'
 
 interface ButtonProps {
   outline: boolean
